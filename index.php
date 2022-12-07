@@ -6,17 +6,22 @@ include './class/Movie.php';
 
 $OnceUpon = new Movie("Once upon a time in hollywood", "Quentin Tarantino", "2018");
 $Wolf = new Movie("Wolf of Wall Street", "Martin Scorsese", "2013");
+$Psycho = new Movie("American Psycho", "Mary Harron", "2000");
+$Game = new Movie("The Imitation Game", "Morten Tyldum", "2014");
+$Scarface = new Movie("Scarface", "Brian de Palma", "1984");
+$Blues = new Movie("The Blues Brothers", "John Landis", "1980");
+
+
 
 $OnceUpon->setImage("https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_FMjpg_UX1000_.jpg");
 $Wolf->setImage("https://i.pinimg.com/originals/4c/9b/8b/4c9b8bcdbfbca5a1bd7d8e911497ed7a.jpg");
+$Psycho->setImage("https://m.media-amazon.com/images/M/MV5BZTM2ZGJmNjQtN2UyOS00NjcxLWFjMDktMDE2NzMyNTZlZTBiXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg");
+$Scarface->setImage("https://m.media-amazon.com/images/M/MV5BNjdjNGQ4NDEtNTEwYS00MTgxLTliYzQtYzE2ZDRiZjFhZmNlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg");
+$Blues->setImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe_DKnmdwB46REqJk073RyAY2MQOArJAssFw&usqp=CAU");
 
-// var_dump($OnceUpon);
-// var_dump($Wolf);
 
+$MovieList = [$OnceUpon, $Wolf, $Psycho, $Game, $Scarface, $Blues];
 
-$MovieList = [$OnceUpon, $Wolf];
-
-// var_dump($MovieList);
 
 ?>
 
@@ -36,15 +41,15 @@ $MovieList = [$OnceUpon, $Wolf];
 <body>
 
     <div class="container">
-        <div class="row p-5 text-center">
+        <div class="row p-5 text-center d-flex flex-wrap justify-content-center">
 
             <?php foreach ($MovieList as $Movie) : ?>
                 <div class="col-3 movie-card d-flex flex-column m-3 p-3 text-center justify-content-between">
                     <div class="card-image h-75">
-                        <img src="<?php echo $Movie->img ?>" alt="<?php echo $Movie->title ?>">
+                        <img src="<?php echo $Movie->img ?? "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930" ?>" alt="<?php echo $Movie->title ?>">
                     </div>
                     <div class="card-text h-25 d-flex flex-column justify-content-around pt-4">
-                        <span><?php echo $Movie->title ?></span>
+                        <span><strong><?php echo $Movie->title ?></strong></span>
                         <span><?php echo $Movie->director ?></span>
                         <span><?php echo $Movie->release_year ?></span>
                     </div>
